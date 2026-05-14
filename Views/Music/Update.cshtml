@@ -1,0 +1,67 @@
+@model ExamWeb_TrungLap.Models.DiaNhac
+
+@{
+    ViewData["Title"] = "Cập nhật";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card shadow-sm" style="border:2px solid #0d6efd;">
+            <div class="card-header font-weight-bold" style="background-color:#0d6efd; color:white;">
+                Cập nhật
+            </div>
+            <div class="card-body">
+                <form asp-action="Update">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="Id" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="TuaCD">Tựa đề</label>
+                        <input asp-for="TuaCD" class="form-control" />
+                        <span asp-validation-for="TuaCD" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="NgheSi">Nghệ sĩ</label>
+                        <input asp-for="NgheSi" class="form-control" />
+                        <span asp-validation-for="NgheSi" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Thể loại</label><br />
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" asp-for="TrongNuoc"
+                                   value="true" id="trongnuoc" />
+                            <label class="form-check-label" for="trongnuoc">Trong nước</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" asp-for="TrongNuoc"
+                                   value="false" id="nuocngoai" />
+                            <label class="form-check-label" for="nuocngoai">Ngoài nước</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="SoLuong">Số lượng</label>
+                        <input asp-for="SoLuong" class="form-control" />
+                        <span asp-validation-for="SoLuong" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="GiaBan">Giá bán</label>
+                        <input asp-for="GiaBan" class="form-control" />
+                        <span asp-validation-for="GiaBan" class="text-danger small"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                    <a asp-action="Index" class="btn btn-secondary btn-sm">Back to List</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
